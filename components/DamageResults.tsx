@@ -11,30 +11,30 @@ export default function DamageResults({ analysis, onRemove }: DamageResultsProps
   const getConditionColor = (condition: string) => {
     switch (condition) {
       case 'Excellent':
-        return 'bg-green-100 text-green-800'
+        return 'bg-green-500/20 text-green-400 border-green-500/50'
       case 'Good':
-        return 'bg-blue-100 text-blue-800'
+        return 'bg-cyan-500/20 text-cyan-400 border-cyan-500/50'
       case 'Fair':
-        return 'bg-yellow-100 text-yellow-800'
+        return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/50'
       case 'Poor':
-        return 'bg-orange-100 text-orange-800'
+        return 'bg-orange-500/20 text-orange-400 border-orange-500/50'
       case 'Severely Damaged':
-        return 'bg-red-100 text-red-800'
+        return 'bg-red-500/20 text-red-400 border-red-500/50'
       default:
-        return 'bg-gray-100 text-gray-800'
+        return 'bg-gray-500/20 text-gray-400 border-gray-500/50'
     }
   }
 
   const getSeverityColor = (severity: string) => {
     switch (severity) {
       case 'minor':
-        return 'bg-green-100 text-green-700'
+        return 'bg-green-500/20 text-green-400 border-green-500/50'
       case 'moderate':
-        return 'bg-yellow-100 text-yellow-700'
+        return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/50'
       case 'severe':
-        return 'bg-red-100 text-red-700'
+        return 'bg-red-500/20 text-red-400 border-red-500/50'
       default:
-        return 'bg-gray-100 text-gray-700'
+        return 'bg-gray-500/20 text-gray-400 border-gray-500/50'
     }
   }
 
@@ -70,7 +70,7 @@ export default function DamageResults({ analysis, onRemove }: DamageResultsProps
   const totalCost = analysis.damages.reduce((sum, d) => sum + d.estimatedCost, 0)
 
   return (
-    <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200 hover:shadow-xl transition-shadow duration-300">
+    <div className="bg-slate-800/80 rounded-xl shadow-lg overflow-hidden border border-cyan-500/20 hover:shadow-xl hover:border-cyan-400/40 transition-all duration-300">
       {/* Image Header */}
       <div className="relative bg-gray-900">
         <img
@@ -119,15 +119,15 @@ export default function DamageResults({ analysis, onRemove }: DamageResultsProps
         {/* Condition Badge */}
         <div className="mb-4 flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <div className={`p-2 rounded-lg ${getConditionColor(analysis.overallCondition)}`}>
+            <div className={`p-2 rounded-lg border ${getConditionColor(analysis.overallCondition)}`}>
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
             </div>
-            <span className="text-xs font-medium text-gray-600">Overall Condition</span>
+            <span className="text-xs font-medium text-gray-400">Overall Condition</span>
           </div>
           <span
-            className={`inline-flex items-center px-3 py-1.5 rounded-full text-xs font-bold border-2 ${getConditionColor(
+            className={`inline-flex items-center px-3 py-1.5 rounded-full text-xs font-bold border ${getConditionColor(
               analysis.overallCondition
             )}`}
           >
@@ -136,84 +136,84 @@ export default function DamageResults({ analysis, onRemove }: DamageResultsProps
         </div>
 
         {analysis.error && (
-          <div className="bg-red-50 border-l-4 border-red-500 rounded-lg p-4 mb-4">
+          <div className="bg-red-500/10 border-l-4 border-red-500 rounded-lg p-4 mb-4">
             <div className="flex items-start">
-              <svg className="w-5 h-5 text-red-500 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-5 h-5 text-red-400 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
               </svg>
-              <p className="text-sm text-red-700 font-medium">{analysis.error}</p>
+              <p className="text-sm text-red-300 font-medium">{analysis.error}</p>
             </div>
           </div>
         )}
 
         {analysis.message && (
-          <div className="bg-amber-50 border-l-4 border-amber-500 rounded-lg p-4 mb-4">
+          <div className="bg-amber-500/10 border-l-4 border-amber-500 rounded-lg p-4 mb-4">
             <div className="flex items-start">
-              <svg className="w-5 h-5 text-amber-500 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-5 h-5 text-amber-400 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
               </svg>
-              <p className="text-sm text-amber-700">{analysis.message}</p>
+              <p className="text-sm text-amber-300">{analysis.message}</p>
             </div>
           </div>
         )}
 
         {!analysis.loading && !analysis.error && analysis.damages.length > 0 && (
           <div className="space-y-3">
-            <div className="flex items-center justify-between mb-4 pb-3 border-b border-gray-200">
-              <h3 className="font-bold text-gray-900 text-sm uppercase tracking-wide">
+            <div className="flex items-center justify-between mb-4 pb-3 border-b border-cyan-500/20">
+              <h3 className="font-bold text-white text-sm uppercase tracking-wide">
                 Detected Damages
               </h3>
-              <span className="text-xs font-semibold text-gray-600 bg-gray-100 px-2 py-1 rounded">
+              <span className="text-xs font-semibold text-gray-300 bg-slate-700 px-2 py-1 rounded">
                 {analysis.damages.length} {analysis.damages.length === 1 ? 'item' : 'items'}
               </span>
             </div>
             {analysis.damages.map((damage, index) => (
               <div
                 key={index}
-                className="border border-gray-200 rounded-lg p-4 bg-gradient-to-br from-gray-50 to-white hover:shadow-md transition-shadow"
+                className="border border-cyan-500/20 rounded-lg p-4 bg-gradient-to-br from-slate-700/50 to-slate-800/50 hover:shadow-md hover:border-cyan-400/40 transition-all"
               >
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-start space-x-3 flex-1">
-                    <div className={`p-2 rounded-lg ${getSeverityColor(damage.severity)} mt-0.5`}>
+                    <div className={`p-2 rounded-lg border ${getSeverityColor(damage.severity)} mt-0.5`}>
                       {getDamageIcon(damage.damageType)}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="font-bold text-sm text-gray-900 mb-1">
+                      <p className="font-bold text-sm text-white mb-1">
                         {damage.carPart}
                       </p>
-                      <div className="flex items-center space-x-2 text-xs text-gray-600">
+                      <div className="flex items-center space-x-2 text-xs text-gray-400">
                         <span className="flex items-center">
                           <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
                             <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                           </svg>
                           {damage.location}
                         </span>
-                        <span className="text-gray-400">•</span>
+                        <span className="text-gray-500">•</span>
                         <span className="capitalize">{damage.damageType}</span>
                       </div>
                     </div>
                   </div>
                   <span
-                    className={`ml-3 px-2.5 py-1 rounded-md text-xs font-bold uppercase tracking-wide ${getSeverityColor(
+                    className={`ml-3 px-2.5 py-1 rounded-md text-xs font-bold uppercase tracking-wide border ${getSeverityColor(
                       damage.severity
                     )}`}
                   >
                     {damage.severity}
                   </span>
                 </div>
-                <div className="flex items-center justify-between pt-3 border-t border-gray-200">
-                  <span className="text-xs font-medium text-gray-600">Estimated Cost</span>
-                  <span className="text-base font-bold text-blue-600">
+                <div className="flex items-center justify-between pt-3 border-t border-cyan-500/20">
+                  <span className="text-xs font-medium text-gray-400">Estimated Cost</span>
+                  <span className="text-base font-bold text-cyan-400">
                     ${damage.estimatedCost.toLocaleString()} AUD
                   </span>
                 </div>
               </div>
             ))}
             {totalCost > 0 && (
-              <div className="mt-4 pt-4 border-t-2 border-gray-300 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg p-4">
+              <div className="mt-4 pt-4 border-t-2 border-cyan-500/30 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-lg p-4">
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-sm text-gray-700 uppercase tracking-wide">Total Repair Cost</span>
-                  <span className="text-xl font-bold text-blue-700">
+                  <span className="font-bold text-sm text-gray-300 uppercase tracking-wide">Total Repair Cost</span>
+                  <span className="text-xl font-bold text-cyan-400">
                     ${totalCost.toLocaleString()} AUD
                   </span>
                 </div>
@@ -227,13 +227,13 @@ export default function DamageResults({ analysis, onRemove }: DamageResultsProps
           analysis.damages.length === 0 &&
           !analysis.message && (
             <div className="text-center py-8">
-              <div className="inline-block p-4 bg-green-100 rounded-full mb-3">
-                <svg className="w-8 h-8 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+              <div className="inline-block p-4 bg-green-500/20 rounded-full mb-3 border border-green-500/50">
+                <svg className="w-8 h-8 text-green-400" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
               </div>
-              <p className="text-sm font-medium text-gray-600">No damages detected</p>
-              <p className="text-xs text-gray-500 mt-1">Vehicle appears to be in good condition</p>
+              <p className="text-sm font-medium text-gray-300">No damages detected</p>
+              <p className="text-xs text-gray-400 mt-1">Vehicle appears to be in good condition</p>
             </div>
           )}
       </div>

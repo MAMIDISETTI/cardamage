@@ -42,43 +42,110 @@ export default function Home() {
   }, [])
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100">
-      {/* Professional Header */}
-      <header className="bg-white border-b border-gray-200 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <main className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+      {/* Header */}
+      <header className="bg-slate-900/50 backdrop-blur-sm border-b border-cyan-500/20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <div className="bg-gradient-to-br from-blue-600 to-blue-700 p-3 rounded-xl shadow-lg">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
+            {/* Logo */}
+            <div className="flex items-center space-x-3">
+              <div className="relative">
+                {/* Three stacked rectangles */}
+                <div className="absolute inset-0 flex flex-col space-y-0.5">
+                  <div className="w-8 h-1.5 bg-cyan-400 rounded transform translate-x-0.5"></div>
+                  <div className="w-8 h-1.5 bg-cyan-300 rounded transform translate-x-1"></div>
+                  <div className="w-8 h-1.5 bg-cyan-500 rounded"></div>
+                </div>
+                {/* Checkmark */}
+                <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full flex items-center justify-center">
+                  <svg className="w-2 h-2 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                </div>
               </div>
-              <div>
-                <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
-                  AutoDamage Pro
-                </h1>
-                <p className="text-sm text-gray-600">Professional Vehicle Damage Assessment System</p>
-              </div>
+              <span className="text-white text-xl font-bold">AutoInspect</span>
             </div>
-            <div className="hidden md:flex items-center space-x-2 text-sm text-gray-600">
-              <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-              </svg>
-              <span>AI-Powered Analysis</span>
+
+            {/* Navigation */}
+            <nav className="hidden md:flex items-center space-x-8">
+              <a href="#" className="text-gray-300 hover:text-white transition-colors">Home</a>
+              <a href="#" className="text-gray-300 hover:text-white transition-colors">Features</a>
+              <a href="#" className="text-gray-300 hover:text-white transition-colors">Pricing</a>
+              <a href="#" className="text-gray-300 hover:text-white transition-colors">About</a>
+            </nav>
+
+            {/* Action Buttons */}
+            <div className="flex items-center space-x-4">
+              <button className="text-white px-4 py-2 rounded-lg border border-gray-600 hover:border-gray-500 transition-colors">
+                Sign In
+              </button>
+              <button className="bg-cyan-500 hover:bg-cyan-400 text-white px-6 py-2 rounded-lg font-semibold transition-colors shadow-lg shadow-cyan-500/50">
+                Get Started
+              </button>
             </div>
           </div>
         </div>
       </header>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* Hero Section - Only show when no analyses */}
+        {analyses.length === 0 && (
+          <div className="text-center mb-16">
+            {/* Badge */}
+            <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full border border-cyan-400/50 bg-cyan-400/10 mb-6">
+              <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
+              <span className="text-cyan-300 text-sm font-medium">AI-Powered Vehicle Inspection</span>
+            </div>
+
+            {/* Main Title */}
+            <h1 className="text-5xl md:text-7xl font-bold mb-4">
+              <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-500 bg-clip-text text-transparent">
+                AutoInspect
+              </span>
+              <span className="text-white"> AI</span>
+            </h1>
+
+            {/* Slogan */}
+            <p className="text-xl md:text-2xl text-white mb-2">
+              Instant AI Repair Estimates for Your Bike
+            </p>
+
+            {/* Tagline */}
+            <p className="text-cyan-400 text-lg mb-8">
+              Powered by Advanced Vision Technology
+            </p>
+
+            {/* Feature Badges */}
+            <div className="flex flex-wrap items-center justify-center gap-4 mb-12">
+              <div className="flex items-center space-x-2 px-4 py-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm">
+                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <span className="text-white text-sm font-medium">AI Damage Detection</span>
+              </div>
+              <div className="flex items-center space-x-2 px-4 py-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm">
+                <span className="text-white text-lg font-semibold">₹</span>
+                <span className="text-white text-sm font-medium">Hyderabad Pricing</span>
+              </div>
+              <div className="flex items-center space-x-2 px-4 py-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm">
+                <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
+                </svg>
+                <span className="text-white text-sm font-medium">Instant Results</span>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Image Upload Section */}
         <div className="mb-10">
-          <div className="mb-4">
-            <h2 className="text-xl font-semibold text-gray-800 mb-2">Upload Vehicle Images</h2>
-            <p className="text-sm text-gray-600">
-              Upload multiple images from different angles for comprehensive damage assessment
-            </p>
-          </div>
+          {analyses.length > 0 && (
+            <div className="mb-6">
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-2 text-center">
+                Upload Vehicle Image
+              </h2>
+            </div>
+          )}
           <ImageUpload
             onImageUpload={handleImageUpload}
             onAnalysisUpdate={handleAnalysisUpdate}
@@ -95,14 +162,14 @@ export default function Home() {
             <div>
               <div className="flex items-center justify-between mb-6">
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                  <h2 className="text-2xl font-bold text-white mb-2">
                     Detailed Image Analysis
                   </h2>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-gray-400">
                     Individual assessment for each uploaded image
                   </p>
                 </div>
-                <div className="text-sm text-gray-500">
+                <div className="text-sm text-gray-400">
                   {analyses.length} {analyses.length === 1 ? 'image' : 'images'}
                 </div>
               </div>
@@ -118,56 +185,53 @@ export default function Home() {
             </div>
           </div>
         )}
+      </div>
 
-        {/* Empty State */}
-        {analyses.length === 0 && (
-          <div className="text-center py-20">
-            <div className="inline-block p-8 bg-white rounded-2xl shadow-xl mb-6">
-              <div className="bg-gradient-to-br from-blue-100 to-blue-200 p-6 rounded-full inline-block">
-                <svg
-                  className="w-20 h-20 text-blue-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                  />
-                </svg>
+      {/* Footer */}
+      <footer className="bg-slate-900/80 border-t border-cyan-500/20 mt-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Left Section */}
+            <div>
+              <div className="flex items-center space-x-3 mb-4">
+                <div className="relative">
+                  <div className="absolute inset-0 flex flex-col space-y-0.5">
+                    <div className="w-8 h-1.5 bg-cyan-400 rounded transform translate-x-0.5"></div>
+                    <div className="w-8 h-1.5 bg-cyan-300 rounded transform translate-x-1"></div>
+                    <div className="w-8 h-1.5 bg-cyan-500 rounded"></div>
+                  </div>
+                </div>
+                <span className="text-white text-xl font-bold">AutoInspect AI</span>
               </div>
+              <p className="text-gray-400 text-sm leading-relaxed">
+                AI-powered vehicle inspection platform providing instant damage assessment and repair estimates for bikes and motorcycles in India.
+              </p>
             </div>
-            <h3 className="text-2xl font-semibold text-gray-900 mb-2">
-              Ready to Assess Vehicle Damage
-            </h3>
-            <p className="text-gray-600 max-w-md mx-auto mb-4">
-              Upload high-quality images of your vehicle from multiple angles to get a comprehensive AI-powered damage assessment
-            </p>
-            <div className="flex items-center justify-center space-x-6 text-sm text-gray-500">
-              <div className="flex items-center space-x-2">
-                <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span>Instant Analysis</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span>Cost Estimates</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span>Detailed Reports</span>
-              </div>
+
+            {/* Middle Section */}
+            <div>
+              <h3 className="text-white font-bold mb-4">Product</h3>
+              <ul className="space-y-2">
+                <li><a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">Features</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">Pricing</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">API</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">Integrations</a></li>
+              </ul>
+            </div>
+
+            {/* Right Section */}
+            <div>
+              <h3 className="text-white font-bold mb-4">Company</h3>
+              <ul className="space-y-2">
+                <li><a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">About</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">Contact</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">Careers</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">Press</a></li>
+              </ul>
             </div>
           </div>
-        )}
-      </div>
+        </div>
+      </footer>
     </main>
   )
 }
